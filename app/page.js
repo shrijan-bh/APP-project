@@ -95,6 +95,7 @@ export default function Home() {
                     <img
                       className="object-cover w-16 h-16 rounded-full"
                       src="/product.jpg"
+                      key={index}
                       alt="Product Image"
                     />
                   </div>
