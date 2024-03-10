@@ -2,11 +2,9 @@
 
 // Home.js
 import React, { useEffect, useState } from "react";
-import Image from "next/image";
 import NavBar from "@/components/Navbar";
 import { SearchIcon } from "@heroicons/react/solid";
 import ProductCard from "@/components/ProductCard";
-import highlight from "@/components/highlight";
 
 export default function Home() {
   const [showModal, setShowModal] = useState(false);
