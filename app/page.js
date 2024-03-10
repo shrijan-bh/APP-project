@@ -8,73 +8,6 @@ import { SearchIcon } from "@heroicons/react/solid";
 import ProductCard from "@/components/ProductCard";
 import highlight from "@/components/highlight";
 
-const dummyJson = [
-  {
-    name: "Banana",
-    currentPrice: 2.89,
-    yesterdayPrice: 6.84,
-    tomorrowPrice: 8.95,
-    description: "Description for item_0",
-    locality: "Locality_3",
-  },
-  {
-    name: "Tomato",
-    currentPrice: 4.67,
-    yesterdayPrice: 2.35,
-    tomorrowPrice: 9.22,
-    description: "Description for item_1",
-    locality: "Locality_5",
-  },
-  {
-    name: "Apple",
-    currentPrice: 6.49,
-    yesterdayPrice: 7.51,
-    tomorrowPrice: 3.83,
-    description: "Description for item_2",
-    locality: "Locality_4",
-  },
-  {
-    name: "Onion",
-    currentPrice: 4.06,
-    yesterdayPrice: 5.84,
-    tomorrowPrice: 1.92,
-    description: "Description for item_3",
-    locality: "Locality_5",
-  },
-  {
-    name: "Ginger",
-    currentPrice: 9.24,
-    yesterdayPrice: 5.16,
-    tomorrowPrice: 3.01,
-    description: "Description for item_4",
-    locality: "Locality_4",
-  },
-  {
-    name: "Cauliflower",
-    currentPrice: 2.09,
-    yesterdayPrice: 8.89,
-    tomorrowPrice: 7.26,
-    description: "Description for item_5",
-    locality: "Locality_2",
-  },
-  {
-    name: "Garlic",
-    currentPrice: 8.68,
-    yesterdayPrice: 4.67,
-    tomorrowPrice: 2.91,
-    description: "Description for item_6",
-    locality: "Locality_2",
-  },
-  {
-    name: "Cabbage",
-    currentPrice: 4.78,
-    yesterdayPrice: 2.74,
-    tomorrowPrice: 5.19,
-    description: "Description for item_7",
-    locality: "Locality_5",
-  },
-];
-
 export default function Home() {
   const [showModal, setShowModal] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
@@ -101,15 +34,16 @@ export default function Home() {
       item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       item.description.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
   useEffect(() => {
     console.log(filteredItems);
-  }, [searchTerm]);
+  }, [searchTerm, filteredItems]);
 
   useEffect(() => {
     if (detailsArray.length === 0) {
       // Only fetch if detailsArray is empty
       getPotatoData().then((data) => {
-        setDetailsArray([data]); // Set detailsArray to an array containing just the fetched data
+        setDetailsArray(data); // Set detailsArray to the fetched data
       });
     }
   }, [detailsArray]);
@@ -240,18 +174,6 @@ export default function Home() {
                 No items found
               </h1>
             )}
-            {dummyJson.map((item, index) => (
-              <ProductCard
-                key={index}
-                name={item.name}
-                currentPrice={item.currentPrice}
-                yesterdayPrice={item.yesterdayPrice}
-                tomorrowPrice={item.tomorrowPrice}
-                description={item.description}
-                locality={item.locality}
-                onClick={() => handleProductClick(item)}
-              />
-            ))}
           </div>
         </div>
       </div>
