@@ -2,6 +2,7 @@
 
 // Home.js
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
 import NavBar from "@/components/Navbar";
 import { SearchIcon } from "@heroicons/react/solid";
 import ProductCard from "@/components/ProductCard";
@@ -92,10 +93,9 @@ export default function Home() {
               <div className="p-6 space-y-6">
                 <div className="flex items-center space-x-4">
                   <div className="flex-shrink-0">
-                    <img
+                    <Image
                       className="object-cover w-16 h-16 rounded-full"
                       src="/product.jpg"
-                      key={index}
                       alt="Product Image"
                     />
                   </div>
@@ -158,7 +158,7 @@ export default function Home() {
                 <div>
                   <ProductCard
                     key={index}
-                    name={item.name}
+                    name={item.name.toUpperCase()}
                     currentPrice={item.currentPrice}
                     yesterdayPrice={item.yesterdayPrice}
                     tomorrowPrice={item.tomorrowPrice}
